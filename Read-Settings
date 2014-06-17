@@ -1,0 +1,6 @@
+# set the defaults settings on Read node
+
+# missing frames to black
+for i in nuke.allNodes():
+    if i.Class() == "Read":
+        i['on_error'].setValue('black')
