@@ -1,6 +1,18 @@
 # set the defaults settings on Read node
 
 # missing frames to black
+# or add this to an init.py ("http://docs.thefoundry.co.uk/nuke/63/pythondevguide/startup.html")
+# nuke.knobDefault('Read.on_error', 'nearest frame')
+
 for i in nuke.allNodes():
     if i.Class() == "Read":
         i['on_error'].setValue('black')
+        i['before'].setValue('black')
+        i['after'].setValue('black')
+        
+# Any file called init.py that is placed in one of NUKE’s plug-in path directories is automatically read whenever NUKE is launched. In other words, this file is read for both command-line and interactive sessions. Note that you should not use init.py for any commands that create UI elements, as this may lead to errors or prevent NUKE from launching.
+# As mentioned above, the ~/.nuke directory is created when NUKE launches (if it doesn’t already exist). The path to this directory is added to NUKE’s plug-in path. You can view the plug-in path as follows:
+# nuke.pluginPath()
+# Result:
+# ['C:/Users/hjeong/.nuke', 'C:\\Program Files\\Common Files/Nuke/7.0/plugins', 'C:/Program Files/Nuke7.0v10/plugins/user', 'C:/Program Files/Nuke7.0v10/plugins/icons', 'C:/Program Files/Nuke7.0v10/plugins']
+
