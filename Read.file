@@ -1,0 +1,5 @@
+# print all file paths from Read nodes
+
+for a in nuke.allNodes():
+     if 'Read' in a['name'].value():
+         print a['file'].vaue()
